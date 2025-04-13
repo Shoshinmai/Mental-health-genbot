@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindMate - Mental Health Support</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#6366f1',secondary:'#a78bfa'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+background-color: #f9fafb;
+}
+.hero-section {
+background-image: url('https://readdy.ai/api/search-image?query=A%20serene%20and%20calming%20gradient%20background%20with%20soft%20pastel%20colors.%20On%20the%20right%20side%2C%20show%20a%20compassionate%20AI%20assistant%20or%20digital%20companion%20helping%20someone.%20The%20image%20should%20convey%20mental%20wellness%2C%20support%2C%20and%20technology%20working%20together.%20The%20left%20side%20should%20have%20a%20clean%2C%20minimal%20design%20with%20ample%20space%20for%20text.%20The%20transition%20between%20the%20empty%20space%20and%20the%20illustration%20must%20be%20smooth%20and%20natural.&width=1200&height=600&seq=12345&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+input:focus, button:focus, textarea:focus {
+outline: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+position: relative;
+padding-left: 28px;
+cursor: pointer;
+user-select: none;
+}
+.custom-checkbox input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #6366f1;
+border-color: #6366f1;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.custom-checkbox .checkmark:after {
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.toggle-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.toggle-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.toggle-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #e5e7eb;
+transition: .4s;
+border-radius: 34px;
+}
+.toggle-slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .toggle-slider {
+background-color: #6366f1;
+}
+input:checked + .toggle-slider:before {
+transform: translateX(26px);
+}
+</style>
+</head>
+<body>
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-4 flex items-center justify-between">
+<a href="#" class="font-['Pacifico'] text-2xl text-primary">MindMate</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#" id="home-link" class="text-gray-900 font-medium hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary">Home</a>
+<a href="#" data-readdy="true" class="text-gray-500 hover:text-primary transition-colors">About</a>
+<a href="#" class="text-gray-500 hover:text-primary transition-colors">Features</a>
+<a href="#" class="text-gray-500 hover:text-primary transition-colors">Resources</a>
+<a href="#" class="text-gray-500 hover:text-primary transition-colors">Contact</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-gray-700 hover:text-primary transition-colors whitespace-nowrap !rounded-button px-4 py-2 border border-gray-300 hover:border-primary">Log In</button>
+<button class="bg-primary text-white hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button px-4 py-2">Sign Up</button>
+</div>
+<div class="md:hidden w-6 h-6 flex items-center justify-center">
+<i class="ri-menu-line text-xl"></i>
+</div>
+</div>
+</header>
+<main>
+<section class="hero-section min-h-[600px] flex items-center">
+<div class="container mx-auto px-4 w-full">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Your Mental Wellness Companion</h1>
+<p class="text-lg text-gray-700 mb-8">MindMate provides personalized AI-powered support for your mental health journey. Connect with our empathetic chatbot anytime, anywhere.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button onclick="window.location.href='final.html';"  class="bg-primary text-white hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button px-6 py-3 text-lg font-medium">Get Started</button>
+<button class="bg-white text-gray-800 hover:bg-gray-100 transition-colors whitespace-nowrap !rounded-button px-6 py-3 text-lg font-medium border border-gray-300">Learn More</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">How MindMate Works</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Our platform combines advanced AI technology with mental health expertise to provide personalized support.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-message-3-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">AI-Powered Chat</h3>
+<p class="text-gray-600">Connect with our empathetic AI chatbot designed to understand your emotions and provide personalized support.</p>
+</div>
+<div class="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-emotion-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Mood Tracking</h3>
+<p class="text-gray-600">Monitor your emotional wellbeing over time with our intuitive mood tracking tools and personalized insights.</p>
+</div>
+<div class="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-shield-check-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Private & Secure</h3>
+<p class="text-gray-600">Your data is protected with end-to-end encryption. We prioritize your privacy and security at every step.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Features Designed for Your Wellbeing</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Discover the tools and resources that make MindMate your ideal mental wellness companion.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="flex gap-6">
+<div class="w-12 h-12 flex-shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-chat-smile-3-line text-primary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">24/7 AI Support</h3>
+<p class="text-gray-600">Access compassionate support anytime, anywhere. Our AI chatbot is always available to listen and provide guidance.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 flex-shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-emotion-happy-line text-primary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Emotion Recognition</h3>
+<p class="text-gray-600">Optional camera access allows our AI to recognize your emotions and provide more personalized support.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 flex-shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-calendar-check-line text-primary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Mood Journal</h3>
+<p class="text-gray-600">Track your emotional patterns over time and gain insights into factors affecting your mental wellbeing.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 flex-shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-health-book-line text-primary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Resource Library</h3>
+<p class="text-gray-600">Access a curated collection of articles, exercises, and resources to support your mental health journey.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 flex-shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-alarm-warning-line text-primary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Crisis Support</h3>
+<p class="text-gray-600">Immediate access to emergency resources and crisis hotlines when you need urgent support.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 flex-shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-lock-password-line text-primary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Privacy Controls</h3>
+<p class="text-gray-600">Manage your data with comprehensive privacy settings and transparent data policies.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto">
+<div class="bg-gray-50 rounded-2xl shadow-sm overflow-hidden">
+<div class="grid md:grid-cols-2">
+<div class="p-8 md:p-12 flex flex-col justify-center">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Create Your Account</h2>
+<p class="text-gray-600 mb-6">Join thousands of users who have found support and guidance with MindMate.</p>
+<form class="space-y-4">
+<div>
+<label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+<input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded text-gray-900" placeholder="Enter your email">
+</div>
+<div>
+<label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+<input type="password" id="password" class="w-full px-4 py-2 border border-gray-300 rounded text-gray-900" placeholder="Create a password">
+<p class="text-xs text-gray-500 mt-1">Minimum 8 characters with at least one special character</p>
+</div>
+<div>
+<label class="custom-checkbox text-sm text-gray-700">
+<input type="checkbox">
+<span class="checkmark"></span>
+I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a>
+</label>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-2 px-4 !rounded-button hover:bg-primary/90 transition-colors">Sign Up</button>
+<p class="text-center text-sm text-gray-600">Already have an account? <a href="#" class="text-primary">Log in</a></p>
+</form>
+</div>
+<div class="bg-primary/5 p-8 md:p-12 flex flex-col justify-center">
+<div class="mb-6">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-shield-check-line text-primary text-xl"></i>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Your Privacy Matters</h3>
+<p class="text-gray-600 mb-6">MindMate is designed with your privacy and security as our top priority:</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<div class="w-5 h-5 flex-shrink-0 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary text-xs"></i>
+</div>
+<span class="text-gray-600 text-sm">End-to-end encrypted conversations</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-5 h-5 flex-shrink-0 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary text-xs"></i>
+</div>
+<span class="text-gray-600 text-sm">No data storage without explicit consent</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-5 h-5 flex-shrink-0 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary text-xs"></i>
+</div>
+<span class="text-gray-600 text-sm">GDPR and HIPAA compliant systems</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-5 h-5 flex-shrink-0 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary text-xs"></i>
+</div>
+<span class="text-gray-600 text-sm">Optional camera access with no recording</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Find answers to common questions about MindMate and our services.</p>
+</div>
+<div class="max-w-3xl mx-auto space-y-4">
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full text-left px-6 py-4 flex items-center justify-between">
+<span class="font-medium text-gray-900">Is MindMate a substitute for professional therapy?</span>
+<i class="ri-arrow-down-s-line text-gray-500"></i>
+</button>
+<div class="px-6 pb-4">
+<p class="text-gray-600">No, MindMate is not a substitute for professional mental health care. While our AI can provide support and resources, we always recommend seeking help from qualified mental health professionals for clinical concerns.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full text-left px-6 py-4 flex items-center justify-between">
+<span class="font-medium text-gray-900">How does the emotion recognition feature work?</span>
+<i class="ri-arrow-down-s-line text-gray-500"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">Our optional emotion recognition feature uses your device's camera to analyze facial expressions. This happens entirely on your device - no video is recorded or sent to our servers. You can enable or disable this feature at any time.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full text-left px-6 py-4 flex items-center justify-between">
+<span class="font-medium text-gray-900">Is my data secure with MindMate?</span>
+<i class="ri-arrow-down-s-line text-gray-500"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">Yes, we take data security very seriously. All conversations are end-to-end encrypted, and we don't store your data unless you explicitly opt in. Our systems are GDPR and HIPAA compliant to ensure the highest standards of privacy.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full text-left px-6 py-4 flex items-center justify-between">
+<span class="font-medium text-gray-900">What should I do in a mental health emergency?</span>
+<i class="ri-arrow-down-s-line text-gray-500"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">If you're experiencing a mental health emergency, please contact emergency services immediately. MindMate provides an emergency resources button that can connect you with crisis hotlines, but it's not designed for emergency intervention.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full text-left px-6 py-4 flex items-center justify-between">
+<span class="font-medium text-gray-900">Can I delete my data from MindMate?</span>
+<i class="ri-arrow-down-s-line text-gray-500"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">Yes, you have complete control over your data. You can delete individual conversations or your entire account at any time through your account settings. Once deleted, your data cannot be recovered.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-primary/5">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Start Your Wellness Journey?</h2>
+<p class="text-lg text-gray-600 mb-8">Join MindMate today and take the first step toward better mental wellbeing.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-white hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button px-8 py-3 text-lg font-medium">Sign Up Now</button>
+<button class="bg-white text-gray-800 hover:bg-gray-100 transition-colors whitespace-nowrap !rounded-button px-8 py-3 text-lg font-medium border border-gray-300">Learn More</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="#" class="font-['Pacifico'] text-2xl text-white mb-4 inline-block">MindMate</a>
+<p class="text-gray-400 mb-4">Your trusted companion for mental wellness and emotional support.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-facebook-fill text-white"></i>
+</a>
+<a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-twitter-x-fill text-white"></i>
+</a>
+<a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-instagram-fill text-white"></i>
+</a>
+<a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary/20 transition-colors">
+<i class="ri-linkedin-fill text-white"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Company</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Our Team</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Resources</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Community</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Crisis Support</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Mental Health Resources</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Legal</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">GDPR Compliance</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Security</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 MindMate. All rights reserved.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Disclaimer</a>
+<a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Accessibility</a>
+<a href="#" class="text-gray-500 hover:text-white transition-colors text-sm">Sitemap</a>
+</div>
+</div>
+<p class="text-gray-600 text-xs mt-4 text-center md:text-left">MindMate is not a substitute for professional mental health treatment. If you're experiencing a crisis, please contact emergency services or a mental health professional immediately.</p>
+</div>
+</div>
+</footer>
+<div class="fixed bottom-4 right-4 bg-white shadow-lg rounded-full p-4 cursor-pointer hover:bg-gray-100 transition-colors">
+<i class="ri-arrow-up-line text-gray-700"></i>
+</div>
+<div class="fixed bottom-0 left-0 w-full bg-white shadow-lg p-4 flex items-center justify-between z-50">
+<p class="text-sm text-gray-700">We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+<div class="flex gap-2">
+<button class="text-gray-700 hover:text-primary transition-colors whitespace-nowrap !rounded-button px-4 py-2 text-sm border border-gray-300">Cookie Settings</button>
+<button class="bg-primary text-white hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button px-4 py-2 text-sm">Accept All</button>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// FAQ Accordion
+const faqButtons = document.querySelectorAll('section:nth-of-type(5) button');
+faqButtons.forEach(button => {
+button.addEventListener('click', () => {
+const content = button.nextElementSibling;
+const icon = button.querySelector('i');
+if (content.classList.contains('hidden')) {
+content.classList.remove('hidden');
+icon.classList.remove('ri-arrow-down-s-line');
+icon.classList.add('ri-arrow-up-s-line');
+} else {
+content.classList.add('hidden');
+icon.classList.remove('ri-arrow-up-s-line');
+icon.classList.add('ri-arrow-down-s-line');
+}
+});
+});
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Back to top button
+const backToTopButton = document.querySelector('.fixed.bottom-4.right-4');
+backToTopButton.addEventListener('click', () => {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+// Home link functionality
+const homeLink = document.getElementById('home-link');
+homeLink.addEventListener('click', (e) => {
+e.preventDefault();
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Cookie consent
+const cookieConsent = document.querySelector('.fixed.bottom-0');
+const acceptButton = cookieConsent.querySelector('button:last-child');
+acceptButton.addEventListener('click', () => {
+cookieConsent.style.display = 'none';
+});
+});
+</script>
+</body>
+</html>
